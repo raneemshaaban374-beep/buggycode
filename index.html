@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buggy Example</title>
+  <style>
+    body {
+      background-color: lightblue; /*the syntax of changing the bg color should be have - */
+    }
+ 
+    #box {
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+ 
+  <h1>Bug Practice</h1>
+ 
+  <input id="nameInput" type="text">
+  <button onclick="start()">Start</button>
+ 
+  <div id="box"></div>
+ 
+  <script>
+   let counter = 0; //we should asume and assign the counter to be zero by adding let//
+   let interval = null; //without it the timer is being hold//
+
+    function start() {
+      let input = document.getElementById("nameInput"); //the id is nameInput not name//
+      console.log(input.value);
+
+        clearInterval(interval);
+      counter = 0;
+ 
+      interval = setInterval(function () {
+        counter++;
+ 
+        document.body.style.backgroundColor = "yellow"; //we should specify where are we changing the bg color + typo//
+ 
+        let box = document.getElementById("box"); //typo//
+        box.style.left = counter + "px";
+ 
+          if (counter === 10) { // without if it cannot check if the counter reached 10, so the box cannot stop//
+          clearInterval(interval);
+        }
+      }, 50);
+    }
+  </script>
+ 
+</body>
+</html>
